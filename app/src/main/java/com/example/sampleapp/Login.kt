@@ -5,21 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.sampleapp.databinding.FragmentLoginBinding
 import com.example.sampleapp.utils.FieldsValidation
-import com.example.sampleapp.viewModel.LoginViewModel
 import com.example.sampleapp.viewModel.ValidationViewModel
 import com.google.android.material.textfield.TextInputEditText
 
 class NnNLogin : Fragment() {
-    private lateinit var binding:FragmentLoginBinding
-    private lateinit var viewModel: LoginViewModel
-    private lateinit var viewModel1:ValidationViewModel
+    private lateinit var binding: FragmentLoginBinding
+    private lateinit var viewModel1: ValidationViewModel
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -59,12 +56,16 @@ class NnNLogin : Fragment() {
             it.findNavController().navigate(R.id.action_login_to_register)
         }
 
-binding.LoginButton.setOnClickListener {
-    FieldsValidation.validateEmail(binding.LoginEmail,viewModel1)
-    FieldsValidation.validatePassword(binding.LoginPassword,viewModel1)
-    val service=Service(requireContext())
-  service.loginFunction(this,binding.email.text.toString(),binding.password.text.toString())
-}
+        binding.LoginButton.setOnClickListener {
+            FieldsValidation.validateEmail(binding.LoginEmail, viewModel1)
+            FieldsValidation.validatePassword(binding.LoginPassword, viewModel1)
+            val service = Service(requireContext())
+            service.loginFunction(
+                this,
+                binding.email.text.toString(),
+                binding.password.text.toString()
+            )
+        }
 
         return binding.root
     }

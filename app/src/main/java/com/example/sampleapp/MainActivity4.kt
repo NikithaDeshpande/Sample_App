@@ -2,11 +2,9 @@ package com.example.sampleapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.ProgressBar
 import androidx.constraintlayout.helper.widget.Carousel
 import androidx.databinding.DataBindingUtil
 import coil.load
@@ -29,15 +27,15 @@ class MainActivity4 : AppCompatActivity() {
             "https://www.thewowstyle.com/wp-content/uploads/2024/01/1-2-680x450.jpg",
             "https://www.thewowstyle.com/wp-content/uploads/2023/12/1-21-680x450.png"
         )
-        binding.carousel4.setAdapter(object :Carousel.Adapter{
+        binding.carousel4.setAdapter(object : Carousel.Adapter {
             override fun count(): Int {
-               return list.size
+                return list.size
             }
 
             override fun populate(view: View?, index: Int) {
-                val v=view as ViewGroup
-                val imageView=v.getChildAt(1) as ImageView
-                imageView.load(list[index]){
+                val v = view as ViewGroup
+                val imageView = v.getChildAt(1) as ImageView
+                imageView.load(list[index]) {
                     error(R.drawable.image1)
                     placeholder(R.drawable.image2)
                 }

@@ -37,8 +37,8 @@ class Register : Fragment() {
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_register, container, false)
 
-        val places = listOf("Please select", "Bangalore", "Raichur", "Mysore", "Hassan")
-        val language= arrayListOf("Kotlin","java","Python","HTML","CSS")
+        val places = listOf("Please select", "Bangalore", "Mangalore", "Mysore", "Hassan")
+        val language = arrayListOf("Kotlin", "java", "Python", "HTML", "CSS")
 
 
         val adapter = ArrayAdapter(
@@ -54,7 +54,7 @@ class Register : Fragment() {
             val day = calender.get(Calendar.DAY_OF_MONTH)
             val datePickerDialog = DatePickerDialog(
                 requireContext(),
-                { view: DatePicker?, selectedYear: Int, monthOfYear: Int, dayOfMonth: Int ->
+                { _: DatePicker?, selectedYear: Int, monthOfYear: Int, dayOfMonth: Int ->
                     val selectedDate = "$selectedYear-${monthOfYear + 1}-$dayOfMonth"
                     binding.RegisterTextviewDate.editText?.setText(selectedDate)
                 },
@@ -65,19 +65,25 @@ class Register : Fragment() {
             datePickerDialog.show()
         }
         binding.time.setOnClickListener {
-            val hour=calender.get(Calendar.HOUR)
-            val min=calender.get(Calendar.MINUTE)
-            val timePickerDialog=TimePickerDialog(requireContext(),{view:TimePicker?,seleclectedHour:Int,selectedMin:Int ->
-              val selectedTime="$seleclectedHour:$selectedMin"
-                binding.RegisterTextviewTime.editText?.setText(selectedTime)
-               },hour,min,true)
+            val hour = calender.get(Calendar.HOUR)
+            val min = calender.get(Calendar.MINUTE)
+            val timePickerDialog = TimePickerDialog(
+                requireContext(),
+                { _: TimePicker?, selectedHour: Int, selectedMin: Int ->
+                    val selectedTime = "$selectedHour:$selectedMin"
+                    binding.RegisterTextviewTime.editText?.setText(selectedTime)
+                },
+                hour,
+                min,
+                true
+            )
             timePickerDialog.show()
         }
-        var list= listOf<Int>()
-        var displayString= ""
-        binding.MultiSelect.buildCheckedSpinner(language){selectedPositionList,display ->
-            list=selectedPositionList
-            displayString=display
+        var list = listOf<Int>()
+        var displayString = ""
+        binding.MultiSelect.buildCheckedSpinner(language) { selectedPositionList, display ->
+            list = selectedPositionList
+            displayString = display
         }
 
         binding.signInFooter2.setOnClickListener {
@@ -95,15 +101,27 @@ class Register : Fragment() {
                 binding.RegisterTextviewConfirmPassword,
                 viewModel
             )
-            FieldsValidation.validateRadioGroup(binding.RadioGroup, binding.errorMsg,viewModel)
-           FieldsValidation.validateDate(binding.RegisterTextviewDate,viewModel)
-            FieldsValidation.validateDate(binding.RegisterTextviewTime,viewModel)
-            FieldsValidation.validateSpinner(binding.spinner,binding.spinnerError,binding.background1,requireContext(),viewModel)
-            FieldsValidation.validateMultiSelect(binding.MultiSelectError,requireContext(),list,binding.background,viewModel)
+            FieldsValidation.validateRadioGroup(binding.RadioGroup, binding.errorMsg, viewModel)
+            FieldsValidation.validateDate(binding.RegisterTextviewDate, viewModel)
+            FieldsValidation.validateDate(binding.RegisterTextviewTime, viewModel)
+            FieldsValidation.validateSpinner(
+                binding.spinner,
+                binding.spinnerError,
+                binding.background1,
+                requireContext(),
+                viewModel
+            )
+            FieldsValidation.validateMultiSelect(
+                binding.MultiSelectError,
+                requireContext(),
+                list,
+                binding.background,
+                viewModel
+            )
 
 
-            if (viewModel.nameError == false && viewModel.emailError == false && viewModel.passwordError == false && viewModel.confirmPasswordError == false && viewModel.dateError==false &&viewModel.hourError==false && viewModel.radioError && viewModel.spinnerError && viewModel.multiSpinnerError ) {
-                if(binding.checkbox1.isChecked) {
+            if (viewModel.nameError == false && viewModel.emailError == false && viewModel.passwordError == false && viewModel.confirmPasswordError == false && viewModel.dateError == false && viewModel.hourError == false && viewModel.radioError && viewModel.spinnerError && viewModel.multiSpinnerError) {
+                if (binding.checkbox1.isChecked) {
 
                     val name = viewModel.name
                     val email = viewModel.email
@@ -145,8 +163,9 @@ class Register : Fragment() {
                                 .show()
                         }
                     }
-                }else{
-                    Toast.makeText(context,"please accept the agreement",Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(context, "please accept the agreement", Toast.LENGTH_SHORT)
+                        .show()
                 }
             } else {
                 Toast.makeText(context, "Please enter all fields", Toast.LENGTH_SHORT).show()

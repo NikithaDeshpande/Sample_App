@@ -1,10 +1,7 @@
+@file:Suppress("UNUSED_PARAMETER")
+
 package com.example.sampleapp
 
-import android.util.Patterns
-import android.view.View
-import android.widget.RadioGroup
-import android.widget.Spinner
-import android.widget.TextView
 import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.BaseObservable
 import androidx.databinding.BindingAdapter
@@ -56,18 +53,20 @@ object Validation : BaseObservable() {
             FieldsValidation.validateConfirmPassword(inputLayout, viewModel)
         }
     }
-    @BindingAdapter("DummyAttribute","viewModel")
+
+    @BindingAdapter("DummyAttribute", "viewModel")
     @JvmStatic
-  fun setDateError(inputLayout: TextInputLayout,id:Boolean,viewModel: ValidationViewModel){
-    inputLayout.editText?.doAfterTextChanged {
-        FieldsValidation.validateDate(inputLayout,viewModel)
-    }
-}
-    @BindingAdapter("Attribute","viewModelRef")
-    @JvmStatic
-    fun setTimeError(inputLayout: TextInputLayout,id:Boolean,viewModel: ValidationViewModel){
+    fun setDateError(inputLayout: TextInputLayout, id: Boolean, viewModel: ValidationViewModel) {
         inputLayout.editText?.doAfterTextChanged {
-            FieldsValidation.validateTime(inputLayout,viewModel)
+            FieldsValidation.validateDate(inputLayout, viewModel)
+        }
+    }
+
+    @BindingAdapter("Attribute", "viewModelRef")
+    @JvmStatic
+    fun setTimeError(inputLayout: TextInputLayout, id: Boolean, viewModel: ValidationViewModel) {
+        inputLayout.editText?.doAfterTextChanged {
+            FieldsValidation.validateTime(inputLayout, viewModel)
         }
     }
 }

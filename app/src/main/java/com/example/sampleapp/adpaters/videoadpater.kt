@@ -12,12 +12,12 @@ import com.example.sampleapp.dataclasses.Video
 //private const val VIEW_TYPE_HEADER1=0
 //private const val VIEW_TYPE_LIST1=1
 //private const val VIEW_TYPE_FOOTER1=2
-class VideoAdapter(private val list:ArrayList<Video>) :
+class VideoAdapter(private val list: ArrayList<Video>) :
     RecyclerView.Adapter<VideoAdapter.VideoViewHolder>() {
-    class VideoViewHolder(view:View):RecyclerView.ViewHolder(view){
-        val imageview:ImageView?=view.findViewById(R.id.imageView3)
-        val textview1:TextView?=view.findViewById(R.id.textView6)
-        val textView2:TextView?=view.findViewById(R.id.textView7)
+    class VideoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val imageview: ImageView? = view.findViewById(R.id.imageView3)
+        val textview1: TextView? = view.findViewById(R.id.textView6)
+        val textView2: TextView? = view.findViewById(R.id.textView7)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
@@ -36,15 +36,27 @@ class VideoAdapter(private val list:ArrayList<Video>) :
 //               VideoViewHolder(view)
 //            }
 //        }
-        val view=LayoutInflater.from(parent.context).inflate(R.layout.slide,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.slide, parent, false)
         return VideoViewHolder(view)
     }
 
     override fun getItemCount(): Int {
-      return list.size
+        return list.size
     }
 
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int) {
+        val f = list[position]
+        holder.textview1?.apply {
+            holder.textview1.text = list[position].s1
+        }
+        holder.textView2?.apply {
+            holder.textView2.text = list[position].s2
+        }
+        holder.imageview?.apply {
+            holder.imageview.setImageResource(f.img)
+        }
+    }
+}
 //        when(getItemViewType(position)){
 //            VIEW_TYPE_HEADER1 ->{
 //
@@ -73,16 +85,4 @@ class VideoAdapter(private val list:ArrayList<Video>) :
 //            itemCount-1 -> VIEW_TYPE_FOOTER1
 //            else -> VIEW_TYPE_LIST1
 //        }
-        val f = list[position]
-                holder.textview1?.apply {
-                    holder.textview1.text=list[position].s1
-                }
-                holder.textView2?.apply {
-                    holder.textView2.text=list[position].s2
-                }
-                holder.imageview?.apply {
-                    holder.imageview.setImageResource(f.img)
-                }
- }
 
-}

@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.sampleapp.adpaters.ItemAdapter
 import com.example.sampleapp.databinding.FragmentDashboardBinding
@@ -24,7 +23,7 @@ class Dashboard : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_dashboard, container, false)
-        val view=binding.root
+        val view = binding.root
         binding.etSearchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 // Handle search query submission here
@@ -42,20 +41,20 @@ class Dashboard : Fragment() {
     }
 
 
-
     fun filterList(newText: String?) {
-        val filteredList:ArrayList<ItemViewModel> = ArrayList()
+        val filteredList: ArrayList<ItemViewModel> = ArrayList()
         list.forEach { s ->
             if (s.item1.lowercase().contains(newText?.lowercase() ?: " ")) {
                 filteredList.add(s)
             }
         }
         if (filteredList.isEmpty()) {
-            Toast.makeText(context,"not found ", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "not found ", Toast.LENGTH_LONG).show()
         } else {
             itemAdapter.setFilteredList(filteredList)
         }
     }
+
     private fun init() {
 
         val itemViewModel = ItemViewModel().apply {
@@ -90,7 +89,7 @@ class Dashboard : Fragment() {
         list.add(itemViewModel4)
 
 
-       binding.recyclerview.setHasFixedSize(true)
+        binding.recyclerview.setHasFixedSize(true)
         with(binding) {
             recyclerview.layoutManager =
                 StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
@@ -106,10 +105,14 @@ class Dashboard : Fragment() {
                     bundle.putString("item1", clickedItem.item1) // Put the data into the Bundle
 
                     val courseFragment = Course()
-                    courseFragment.arguments = bundle // Set the Bundle as arguments for the fragment
+                    courseFragment.arguments =
+                        bundle // Set the Bundle as arguments for the fragment
 
                     requireActivity().supportFragmentManager.beginTransaction()
-                        .replace(R.id.navHostFragmentView, courseFragment) // Replace fragment_container with your actual container ID
+                        .replace(
+                            R.id.navHostFragmentView,
+                            courseFragment
+                        ) // Replace fragment_container with your actual container ID
                         .addToBackStack(null) // Optionally, add to back stack
                         .commit()
 //                        val intent = Intent(this@DashboardActivity, CourseActivity::class.java)
@@ -124,7 +127,7 @@ class Dashboard : Fragment() {
             })
         }
 
-       binding.recyclerview.addItemDecoration(CustomItemDecoration(50))
+        binding.recyclerview.addItemDecoration(CustomItemDecoration(50))
 
 
     }

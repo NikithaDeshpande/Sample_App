@@ -1,6 +1,5 @@
 package com.example.sampleapp.viewModel
 
-import android.widget.TextView
 import androidx.lifecycle.ViewModel
 
 class ValidationViewModel:ViewModel() {
