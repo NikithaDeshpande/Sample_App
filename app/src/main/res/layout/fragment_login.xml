@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
-            name="loginViewModel"
-            type="com.example.sampleapp.viewModel.LoginViewModel" />
+            name="validationViewModel"
+            type="com.example.sampleapp.viewModel.ValidationViewModel" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
 
@@ -60,6 +60,8 @@
             android:id="@+id/Login_Email"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            viewModel="@{validationViewModel}"
+            emailValidation="@{validationViewModel.email}"
             android:background="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -68,7 +70,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/shadow"
-                android:text="@={loginViewModel.email}"
                 android:drawableStart="@drawable/baseline_mail_outline_24"
                 android:hint="@string/EMAIL"
                 android:inputType="text" />
@@ -94,6 +95,8 @@
             android:id="@+id/Login_Password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            viewModel="@{validationViewModel}"
+            passwordValidation="@{validationViewModel.password}"
             android:background="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -101,7 +104,6 @@
                 style="@style/Login_Edittext_medium"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@={loginViewModel.password}"
                 android:background="@drawable/shadow"
                 android:drawableStart="@drawable/baseline_password_24"
                 android:hint="@string/PASSWORD"
@@ -139,6 +141,7 @@
         android:id="@+id/Login_Footer1"
         style="@style/TextView_Footer"
         android:layout_width="wrap_content"
+        android:paddingBottom="35dp"
         android:layout_height="wrap_content"
         android:text="@string/don_t_have_an_account"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -151,6 +154,7 @@
         android:id="@+id/Login_Footer2"
         style="@style/Login_link"
         android:layout_width="wrap_content"
+        android:paddingBottom="35dp"
         android:layout_height="wrap_content"
         android:text="@string/Sign_in"
         app:layout_constraintBottom_toBottomOf="parent"

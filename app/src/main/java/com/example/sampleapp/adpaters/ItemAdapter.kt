@@ -45,7 +45,7 @@ class ItemAdapter(private var list:ArrayList<ItemViewModel>):
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val f=list[position]
-holder.bind(f)
+      holder.bind(f)
         holder.itemView.setOnClickListener {
             if (onClickListener != null) {
                 onClickListener!!.onClick(position)

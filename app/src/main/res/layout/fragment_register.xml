@@ -2,174 +2,373 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <data>
+
+    <data
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
         <variable
-            name="registerViewModel"
-            type="com.example.sampleapp.viewModel.RegisterViewModel" />
+            name="ValidationViewModel"
+            type="com.example.sampleapp.viewModel.ValidationViewModel" />
     </data>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Register"
-    android:background="@color/white">
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="202dp"
-        android:layout_height="204dp"
-        android:contentDescription="@string/desc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bg1"
-        tools:ignore="ImageContrastCheck" />
-
-    <TextView
-        android:id="@+id/Sign_in_Toolbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="80dp"
-        android:paddingBottom="20dp"
-        app:drawableLeftCompat="@drawable/baseline_arrow_back_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/Sign_in_Headline"
-        style="@style/Register_textview_Header_large"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/start_margin"
-        android:text="@string/create_account"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Sign_in_Toolbar" />
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Register_textview_Name"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/start_margin"
-        android:layout_marginTop="@dimen/top_margin"
-        android:layout_marginEnd="@dimen/end_margin"
-        android:layout_marginBottom="@dimen/bottom_margin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Sign_in_Headline">
+        android:paddingBottom="30dp"
+        android:fillViewport="true">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/name"
-            style="@style/Register_edittext"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@={registerViewModel.fullName}"
-            android:drawableStart="@drawable/baseline_person_outline_24"
-            android:hint="@string/full_name"
-            android:inputType="text" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Register_textview_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/start_margin"
-        android:layout_marginTop="@dimen/top_margin"
-        android:layout_marginEnd="@dimen/end_margin"
-        android:layout_marginBottom="@dimen/bottom_margin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Register_textview_Name">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Email"
-            style="@style/Register_edittext"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@={registerViewModel.email}"
-            android:drawableStart="@drawable/baseline_mail_outline_24"
-            android:hint="@string/EMAIL"
-            android:inputType="textEmailAddress" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:background="@color/white"
+            tools:context=".Register">
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="202dp"
+                android:layout_height="204dp"
+                android:contentDescription="@string/desc"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/bg1"
+                tools:ignore="ImageContrastCheck" />
+
+            <TextView
+                android:id="@+id/Sign_in_Toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="50dp"
+                android:paddingBottom="20dp"
+                app:drawableLeftCompat="@drawable/baseline_arrow_back_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/Sign_in_Headline"
+                style="@style/Register_textview_Header_large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/start_margin"
+                android:text="@string/create_account"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Sign_in_Toolbar" />
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Register_textview_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/start_margin"
-        android:layout_marginTop="@dimen/top_margin"
-        android:layout_marginEnd="@dimen/end_margin"
-        android:layout_marginBottom="@dimen/bottom_margin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Register_textview_email">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Register_textview_Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/start_margin"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="@dimen/end_margin"
+                app:fullNameValidation="@{ValidationViewModel.name}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Sign_in_Headline"
+                app:viewModel="@{ValidationViewModel}">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Password"
-            style="@style/Register_edittext"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@={registerViewModel.password}"
-            android:drawableStart="@drawable/baseline_password_24"
-            android:hint="@string/PASSWORD"
-            android:inputType="textPassword" />
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/name"
+                    style="@style/Register_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableStart="@drawable/baseline_person_outline_24"
+                    android:hint="@string/full_name"
+                    android:inputType="text"
+                    android:text="@={ValidationViewModel.name}" />
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Register_textview_confirm_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/start_margin"
-        android:layout_marginTop="@dimen/top_margin"
-        android:layout_marginEnd="@dimen/end_margin"
-        android:layout_marginBottom="@dimen/bottom_margin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Register_textview_password">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Register_textview_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/start_margin"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="@dimen/end_margin"
+                android:layout_marginBottom="@dimen/bottom_margin"
+                app:emailValidation="@{ValidationViewModel.email}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Register_textview_Name"
+                app:viewModel="@{ValidationViewModel}">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ConfirmPassword"
-            style="@style/Register_edittext"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@={registerViewModel.confirmPassword}"
-            android:drawableStart="@drawable/baseline_password_24"
-            android:hint="@string/confirm_password"
-            android:inputType="textPassword" />
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Email"
+                    style="@style/Register_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/baseline_mail_outline_24"
+                    android:hint="@string/EMAIL"
+                    android:inputType="textEmailAddress"
+                    android:text="@={ValidationViewModel.email}" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/Register_button"
-        style="@style/TextView_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:gravity="end"
-        android:text="@string/sign_in"
-        app:drawableEndCompat="@drawable/baseline_arrow_forward_24"
-        app:layout_constraintEnd_toEndOf="@+id/Register_textview_confirm_password"
-        app:layout_constraintTop_toBottomOf="@+id/Register_textview_confirm_password"
-        tools:ignore="TextContrastCheck" />
+            <TextView
+                android:id="@+id/Gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:text="@string/gender"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@id/RadioGroup"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/RadioGroup" />
 
-    <TextView
-        android:id="@+id/Sign_in_footer1"
-        style="@style/TextView_Footer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/already_have_an_account"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/sign_in_footer2"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent" />
+            <RadioGroup
+                android:id="@+id/RadioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toEndOf="@id/Gender"
+                app:layout_constraintTop_toBottomOf="@id/Register_textview_email">
 
-    <TextView
-        android:id="@+id/sign_in_footer2"
-        style="@style/Link"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sign_up"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Sign_in_footer1"
-        tools:ignore="TextContrastCheck" />
+                <RadioButton
+                    android:id="@+id/radioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:text="@string/male" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/female" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/errorMsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ff0000"
+                app:layout_constraintEnd_toEndOf="@id/RadioGroup"
+                app:layout_constraintStart_toStartOf="@id/RadioGroup"
+                app:layout_constraintTop_toBottomOf="@id/RadioGroup"
+                tools:text="hey" />
+
+            <FrameLayout
+                android:id="@+id/FrameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/errorMsg">
+
+                <View
+                    android:id="@+id/background1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border" />
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="15dp"
+                    android:textSize="20sp" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/spinnerError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/red"
+                android:layout_marginTop="3dp"
+                tools:text="hey"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@id/FrameLayout"
+                app:layout_constraintTop_toBottomOf="@id/FrameLayout" />
+            <FrameLayout
+                android:id="@+id/MultiSelectLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="32dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/FrameLayout">
+
+                <View
+                    android:id="@+id/background"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border" />
+                <com.puskal.multiselectspinner.MultiSelectSpinnerView
+                    android:id="@+id/MultiSelect"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="15dp"
+                    android:textSize="20sp" />
+            </FrameLayout>
+<TextView
+    android:id="@+id/MultiSelectError"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@color/red"
+    tools:text="hey"
+    android:textSize="15sp"
+    app:layout_constraintStart_toStartOf="@id/MultiSelectLayout"
+    app:layout_constraintTop_toBottomOf="@id/MultiSelectLayout"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Register_textview_Date"
+                DummyAttribute="@{true}"
+                viewModel="@{ValidationViewModel}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/start_margin"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="@dimen/end_margin"
+                android:layout_marginBottom="@dimen/bottom_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/MultiSelectLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/date"
+                    style="@style/Register_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/baseline_calendar_today_24"
+                    android:hint="dd-mm-yy"
+                    android:text="@={ValidationViewModel.date}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Register_textview_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/start_margin"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="@dimen/end_margin"
+                android:layout_marginBottom="@dimen/bottom_margin"
+                app:Attribute="@{true}"
+                viewModelRef="@{ValidationViewModel}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/Register_textview_Date">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/time"
+                    style="@style/Register_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/round_access_time_24"
+                    android:hint="hh:mm"
+                    android:text="@={ValidationViewModel.time}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Register_textview_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/start_margin"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="@dimen/end_margin"
+                android:layout_marginBottom="@dimen/bottom_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/Register_textview_time"
+                app:passwordValidation="@{ValidationViewModel.password}"
+                app:viewModel="@{ValidationViewModel}">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Password"
+                    style="@style/Register_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/baseline_password_24"
+                    android:hint="@string/PASSWORD"
+                    android:inputType="textPassword"
+                    android:text="@={ValidationViewModel.password}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Register_textview_confirm_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/start_margin"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="@dimen/end_margin"
+                android:layout_marginBottom="@dimen/bottom_margin"
+                app:confirmPasswordValidation="@{ValidationViewModel.confirmPassword}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Register_textview_password"
+                app:password="@{ValidationViewModel.password}"
+                app:viewModel="@{ValidationViewModel}">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ConfirmPassword"
+                    style="@style/Register_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/baseline_password_24"
+                    android:hint="@string/confirm_password"
+                    android:inputType="textPassword"
+                    android:text="@={ValidationViewModel.confirmPassword}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/Register_button"
+                style="@style/TextView_Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:layout_marginBottom="30dp"
+                android:gravity="end"
+                android:text="@string/sign_in"
+                app:drawableEndCompat="@drawable/baseline_arrow_forward_24"
+                app:layout_constraintBottom_toTopOf="@id/Sign_in_footer1"
+                app:layout_constraintEnd_toEndOf="@+id/Register_textview_confirm_password"
+                app:layout_constraintTop_toBottomOf="@+id/Register_textview_confirm_password"
+                tools:ignore="TextContrastCheck" />
+
+            <CheckBox
+                android:id="@+id/checkbox1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:text="i accept the agreement"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/Register_textview_confirm_password" />
+
+            <TextView
+                android:id="@+id/Sign_in_footer1"
+                style="@style/TextView_Footer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:paddingBottom="10dp"
+                android:text="@string/already_have_an_account"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/sign_in_footer2"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/sign_in_footer2"
+                style="@style/Link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:paddingBottom="10dp"
+                android:text="@string/sign_up"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/Sign_in_footer1"
+                tools:ignore="TextContrastCheck" />
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/Switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="44dp"
+                app:layout_constraintBottom_toBottomOf="@+id/Sign_in_Headline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/Sign_in_Headline" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

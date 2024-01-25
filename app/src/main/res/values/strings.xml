@@ -27,4 +27,15 @@
     <string name="Popular_Courses">Popular Courses</string>
     <string name="this_is_footer">This is footer</string>
     <string name="loading">Loading...</string>
+    <string name="gender">Gender :</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="city1">City :</string>
+    <string name="image">image</string>
+    <string-array name="places">
+        <item>Bangalore</item>
+        <item>Mysore</item>
+        <item>Hassan</item>
+        <item>Raichur</item>
+    </string-array>
 </resources>

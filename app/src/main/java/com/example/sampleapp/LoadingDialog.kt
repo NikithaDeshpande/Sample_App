@@ -29,6 +29,20 @@ class LoadingDialog (private var fragment: Fragment){
        },2000)
 
     }
+    fun startLoginDialog(b:Boolean) {
+        val builder=AlertDialog.Builder(fragment.requireContext())
+        val inflate =fragment.layoutInflater
+        builder.setView(inflate.inflate(R.layout.activity_progress_bar,null))
+            .setCancelable(true)
+        alterDialog=builder.create()
+        alterDialog.show()
+        val handler=Handler(Looper.getMainLooper())
+        handler.postDelayed({
+            alterDialog.dismiss()
+            showDialogLoginMessage(b)
+        },2000)
+
+    }
 
     private fun showDialogMessage(b: Boolean) {
         val message=if(b) "Success" else "Not success"
@@ -38,10 +52,24 @@ class LoadingDialog (private var fragment: Fragment){
         val r=builder.create()
         r.show()
     }
-
+    private fun showDialogLoginMessage(b: Boolean) {
+        val message=if(b) "Success" else "Not success"
+        val builder=AlertDialog.Builder(fragment.requireContext())
+        builder.setMessage(message).setCancelable(false).setPositiveButton("Ok"){ _: DialogInterface?, _: Int ->
+            if(b) {
+                redirectToDashboard()
+            }}
+        val r=builder.create()
+        r.show()
+    }
     private fun redirectToLoginPage() {
         val navController=Navigation.findNavController(fragment.requireActivity(),R.id.navHostFragmentView)
         navController.navigate(R.id.action_register_to_login)
+    }
+    private fun redirectToDashboard(){
+        val navController=Navigation.findNavController(fragment.requireActivity(),R.id.navHostFragmentView)
+        navController.navigate(R.id.action_login_to_dashboard4
+        )
     }
 
 }

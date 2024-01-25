@@ -1,8 +1,11 @@
 pluginManagement {
     repositories {
+
         google()
         mavenCentral()
         gradlePluginPortal()
+        maven("https://jitpack.io")
+        mavenCentral()
     }
 }
 dependencyResolutionManagement {
@@ -10,9 +13,11 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven("https://jitpack.io")
     }
 }
 
 rootProject.name = "SampleApp"
-include(":app")
+include(":app",":multiselectionspinner")
+
  

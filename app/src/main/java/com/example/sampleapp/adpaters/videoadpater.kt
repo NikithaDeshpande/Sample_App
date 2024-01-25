@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sampleapp.R
 import com.example.sampleapp.dataclasses.Video
 
-private const val VIEW_TYPE_HEADER1=0
-private const val VIEW_TYPE_LIST1=1
-private const val VIEW_TYPE_FOOTER1=2
+//private const val VIEW_TYPE_HEADER1=0
+//private const val VIEW_TYPE_LIST1=1
+//private const val VIEW_TYPE_FOOTER1=2
 class VideoAdapter(private val list:ArrayList<Video>) :
     RecyclerView.Adapter<VideoAdapter.VideoViewHolder>() {
     class VideoViewHolder(view:View):RecyclerView.ViewHolder(view){
@@ -21,56 +21,68 @@ class VideoAdapter(private val list:ArrayList<Video>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
-        return when(viewType){
-            VIEW_TYPE_HEADER1 ->{
-                val view=LayoutInflater.from(parent.context).inflate(R.layout.heading,parent,false)
-        VideoViewHolder(view)
-            }
-            VIEW_TYPE_FOOTER1 ->{
-                val view=LayoutInflater.from(parent.context).inflate(R.layout.footer,parent,false)
-                VideoViewHolder(view)
-            }
-            else  ->{
-
-                val view=LayoutInflater.from(parent.context).inflate(R.layout.slide,parent,false)
-               VideoViewHolder(view)
-            }
-        }
+//        return when(viewType){
+//            VIEW_TYPE_HEADER1 ->{
+//                val view=LayoutInflater.from(parent.context).inflate(R.layout.heading,parent,false)
+//        VideoViewHolder(view)
+//            }
+//            VIEW_TYPE_FOOTER1 ->{
+//                val view=LayoutInflater.from(parent.context).inflate(R.layout.footer,parent,false)
+//                VideoViewHolder(view)
+//            }
+//            else  ->{
+//
+//                val view=LayoutInflater.from(parent.context).inflate(R.layout.slide,parent,false)
+//               VideoViewHolder(view)
+//            }
+//        }
+        val view=LayoutInflater.from(parent.context).inflate(R.layout.slide,parent,false)
+        return VideoViewHolder(view)
     }
 
     override fun getItemCount(): Int {
-      return list.size+2
+      return list.size
     }
 
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int) {
-        when(getItemViewType(position)){
-            VIEW_TYPE_HEADER1 ->{
-
-            }
-            VIEW_TYPE_FOOTER1 ->{
-
-            }
-            else ->{
-                val f = list[position-1]
+//        when(getItemViewType(position)){
+//            VIEW_TYPE_HEADER1 ->{
+//
+//            }
+//            VIEW_TYPE_FOOTER1 ->{
+//
+//            }
+//            else ->{
+//                val f = list[position-1]
+//                holder.textview1?.apply {
+//                    holder.textview1.text=list[position-1].s1
+//                }
+//                holder.textView2?.apply {
+//                    holder.textView2.text=list[position-1].s2
+//                }
+//                holder.imageview?.apply {
+//                    holder.imageview.setImageResource(f.img)
+//                }
+//                }
+//            }
+//        }
+//
+//    override fun getItemViewType(position: Int): Int {
+//        return when (position) {
+//            0 -> VIEW_TYPE_HEADER1
+//            itemCount-1 -> VIEW_TYPE_FOOTER1
+//            else -> VIEW_TYPE_LIST1
+//        }
+        val f = list[position]
                 holder.textview1?.apply {
-                    holder.textview1.text=list[position-1].s1
+                    holder.textview1.text=list[position].s1
                 }
                 holder.textView2?.apply {
-                    holder.textView2.text=list[position-1].s2
+                    holder.textView2.text=list[position].s2
                 }
                 holder.imageview?.apply {
                     holder.imageview.setImageResource(f.img)
                 }
-                }
-            }
-        }
-
-    override fun getItemViewType(position: Int): Int {
-        return when (position) {
-            0 -> VIEW_TYPE_HEADER1
-            itemCount-1 -> VIEW_TYPE_FOOTER1
-            else -> VIEW_TYPE_LIST1
-        }
-    }
+ }
 
 }

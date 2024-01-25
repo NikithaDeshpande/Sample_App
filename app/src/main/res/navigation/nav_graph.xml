@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/login">
 
     <fragment
         android:id="@+id/login"
-        android:name="com.example.sampleapp.Login"
-        android:label="Login" >
+        android:name="com.example.sampleapp.NnNLogin"
+        android:label="Login"
+        tools:layout="@layout/fragment_login"
+        >
         <action
             android:id="@+id/action_login_to_register"
             app:destination="@id/register" />
@@ -18,7 +21,8 @@
     <fragment
         android:id="@+id/register"
         android:name="com.example.sampleapp.Register"
-        android:label="Register" >
+        android:label="Register"
+        tools:layout="@layout/fragment_register">
 
         <action
             android:id="@+id/action_register_to_login"
@@ -27,7 +31,8 @@
     <fragment
         android:id="@+id/dashboard"
         android:name="com.example.sampleapp.Dashboard"
-        android:label="Dashboard" >
+        android:label="Dashboard"
+        tools:layout="@layout/fragment_dashboard">
         <action
             android:id="@+id/action_dashboard_to_course"
             app:destination="@id/course" />
@@ -36,5 +41,6 @@
     <fragment
         android:id="@+id/course"
         android:name="com.example.sampleapp.Course"
-        android:label="Course" />
+        android:label="Course"
+        tools:layout="@layout/fragment_course"/>
 </navigation>
